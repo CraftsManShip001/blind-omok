@@ -43,6 +43,7 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
+  verification: { google: "j4DHwOEIy3rE0yHQgkkPh90EqtaJaCwfaQvC7w4f5kE" },
 };
 
 export const viewport: Viewport = {
