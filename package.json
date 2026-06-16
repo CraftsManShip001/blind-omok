@@ -1,17 +1,21 @@
 {
-  "name": "scaffold-tmp",
+  "name": "blind-omok",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_ENV=development tsx watch --clear-screen=false server.ts",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production tsx server.ts",
     "lint": "eslint"
   },
   "dependencies": {
+    "geist": "^1.7.2",
     "next": "16.2.9",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "tsx": "^4.20.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
