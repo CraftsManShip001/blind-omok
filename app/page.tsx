@@ -94,6 +94,25 @@ const FEATURES = [
   { t: "관전 + 색 공개", d: "두 명 외에는 관전자. 색 공개를 켜고 끌 수 있어요." },
 ];
 
+const FAQ = [
+  {
+    q: "블라인드 오목이 뭔가요?",
+    a: "블라인드 오목은 일반 오목과 규칙은 같지만 모든 돌이 같은 색으로 놓이는 변형 오목입니다. 내가 둔 돌과 상대가 둔 돌을 기억하면서 가로·세로·대각선으로 5개를 먼저 이으면 이깁니다.",
+  },
+  {
+    q: "블라인드 오목은 어떻게 하나요?",
+    a: "닉네임만 입력하면 바로 시작할 수 있어요. 랜덤 매칭으로 상대를 찾거나, 방을 만들어 코드를 친구에게 공유하면 됩니다. 게임이 끝나면 모든 돌의 진짜 색(흑·백)이 공개됩니다.",
+  },
+  {
+    q: "블라인드 오목은 무료인가요?",
+    a: "네, 완전 무료입니다. 설치나 회원가입 없이 웹 브라우저에서 닉네임만으로 바로 플레이할 수 있습니다.",
+  },
+  {
+    q: "관전도 할 수 있나요?",
+    a: "가능합니다. 한 방에는 플레이어 2명과 여러 명의 관전자가 들어올 수 있고, 관전자는 돌 색 공개를 자유롭게 켜고 끌 수 있습니다.",
+  },
+];
+
 function RulesSection() {
   return (
     <section
@@ -132,6 +151,26 @@ function RulesSection() {
           ))}
         </div>
 
+        <div className="flex flex-col gap-3">
+          <span className="micro-label">FAQ</span>
+          <h2 className="text-2xl font-semibold tracking-tight text-fg sm:text-3xl">
+            자주 묻는 질문
+          </h2>
+        </div>
+        <div className="flex flex-col divide-y divide-grid overflow-hidden rounded-2xl border border-grid">
+          {FAQ.map((f) => (
+            <details key={f.q} className="group bg-surface px-6 py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between text-base font-medium text-fg">
+                {f.q}
+                <span className="mono text-muted transition-transform group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{f.a}</p>
+            </details>
+          ))}
+        </div>
+
         <p className="mono text-xs text-muted">
           블라인드 오목 · 같은 색. 다른 기억.
         </p>
@@ -154,10 +193,25 @@ function JsonLd() {
     inLanguage: "ko",
     operatingSystem: "Any",
   };
+  const faq = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }}
+      />
+    </>
   );
 }

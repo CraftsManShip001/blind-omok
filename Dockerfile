@@ -10,6 +10,10 @@ RUN npm ci
 
 # Build the Next.js app.
 COPY . .
+# NEXT_PUBLIC_* and prerendered metadata/sitemap/robots are baked at BUILD time.
+# Railway passes matching service variables as Docker build args when declared ARG.
+ARG NEXT_PUBLIC_SITE_URL
+ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
 RUN npm run build
 
 # The platform usually injects PORT; default to 3000 otherwise.
