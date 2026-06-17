@@ -12,7 +12,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "블라인드 오목 — 같은 색. 다른 기억.",
+    default: "블라인드 오목",
     template: "%s · 블라인드 오목",
   },
   description: DESCRIPTION,
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "블라인드 오목",
-    title: "블라인드 오목 — 같은 색. 다른 기억.",
+    title: "블라인드 오목",
     description: DESCRIPTION,
     url: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "블라인드 오목 — 같은 색. 다른 기억.",
+    title: "블라인드 오목",
     description: DESCRIPTION,
   },
   robots: { index: true, follow: true },
